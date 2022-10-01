@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "gulp": "^4.0.2",
+    "gulp-server-io": "^1.5.1"
+  },
+  "name": "d3-example",
+  "version": "1.0.0",
+  "description": "\"Example for D3 framework features\"",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "D3",
+    "visualization"
+  ],
+  "author": "Vladimir Eremenko",
+  "license": "ISC"
+}
