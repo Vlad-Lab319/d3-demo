@@ -170,7 +170,7 @@ const pie = d3.pie()
 
 
 
-// console.log('Pie: ', pie);
+console.log('Pie: ', pie);
 
 const path = d3.arc()
   .outerRadius(radius)
@@ -194,6 +194,15 @@ arc.append('path')
     }
     // 'red'
   )
+
+arc.append("text")
+  .attr("transform", function (d) {
+    return "translate(" + label.centroid(d) + ")";
+  })
+  .text(function (d) { return d.value; })
+  .attr("font-size", "15px")
+  .attr("fill", "white")
+
 
 // console.log("arc: ", arc);
 
