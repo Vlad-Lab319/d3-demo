@@ -1,9 +1,8 @@
 name,parent,value
 Origin,,
 BC,Origin,
-Saskatchewan,Origin,
 Alberta,Origin,
-Manitoba,Origin,
+Prairies,Origin
 Ontario,Origin,
 Quebec,Origin,
 Maritime,Origin,
@@ -11,9 +10,9 @@ Vancouver,BC,1955800
 Victoria,BC,1248900
 Calgary,Alberta,587000
 Edmonton,Alberta,439700
-Regina,Saskatchewan,340400
-Saskatoon,Saskatchewan,422900
-Winnipeg,Manitoba,361500
+Regina,Prairies,340400
+Saskatoon,Prairies,422900
+Winnipeg,Prairies,361500
 Toronto,Ontario,1321600
 Ottawa,Ontario,735300
 Montreal,Quebec,612300

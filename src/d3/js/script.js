@@ -59,7 +59,9 @@ d3.json('js/data/forecast.json')
       .style('position', 'absolute')
       .style('padding', '0 10px')
       .style('background', 'white')
-      .style('opacity', 0);
+      .style('opacity', 0)
+      .style('pointer-events', 'none')
+
 
     myChart = d3.select('#viz')
       .append('svg')
@@ -155,10 +157,10 @@ const g = svg.append('g')
   .attr("transform", "translate(" + w / 2 + "," + h / 2 + ")");
 
 const color = d3.scaleOrdinal([
-  '#4daf4a', 
-  '#377eb8', 
-  '#ff7f00', 
-  '#984ea3', 
+  '#4daf4a',
+  '#377eb8',
+  '#ff7f00',
+  '#984ea3',
   // '#e41a1c'
 ]);
 
@@ -186,79 +188,78 @@ const arc = g.selectAll('.arc')
 arc.append('path')
   .attr('d', path)
   .attr('fill',
-    function(d) {
-    // console.log('color: ', d)
+    function (d) {
+      // console.log('color: ', d)
       return color(d.index)
     }
     // 'red'
   )
 
-  // console.log("arc: ", arc);
+// console.log("arc: ", arc);
 
-d3.select("body")
-  .append("table")
-  .style('margin', 'auto')
-  .selectAll("tr")
-  .data(matrix)
-  .join("tr")
-  .selectAll("td")
-  .data(d => d)
-  .join("td")
-  .text(d => d);
+// Table
 
-
-
+// d3.select("body")
+//   .append("table")
+//   .style('margin', 'auto')
+//   .selectAll("tr")
+//   .data(matrix)
+//   .join("tr")
+//   .selectAll("td")
+//   .data(d => d)
+//   .join("td")
+//   .text(d => d);
 
 
 
 // Bars and line
 
-const graph = d3.select('body')
-  .append('svg')
-  .attr("width", 500)
-  .attr("height", 500)
+// const graph = d3.select('body')
+//   .append('svg')
+//   .attr("width", 500)
+//   .attr("height", 500)
 
-const line = graph.append('line')
-  .attr('x1', 100)
-  .attr('x2', 500)
-  .attr('y1', 50)
-  .attr('y2', 250)
-  .attr('stroke', 'red')
+// const line = graph.append('line')
+//   .attr('x1', 100)
+//   .attr('x2', 500)
+//   .attr('y1', 50)
+//   .attr('y2', 250)
+//   .attr('stroke', 'red')
 
-const bar1 = graph.append('g')
-  .attr("fill", "blue")
+// const bar1 = graph.append('g')
+//   .attr("fill", "blue")
 
-const leftBar = bar1.append("rect")
-  .attr("x", 120)
-  .attr("y", 20)
-  .attr("height", 20)
-  .attr("width", 10)
+// const leftBar = bar1.append("rect")
+//   .attr("x", 120)
+//   .attr("y", 20)
+//   .attr("height", 20)
+//   .attr("width", 10)
 
-const bar2 = graph.append("rect")
-  .attr("fill", "blue")
-  .attr("x", 360)
-  .attr("y", 20)
-  .attr("height", 20)
-  .attr("width", 10)
+// const bar2 = graph.append("rect")
+//   .attr("fill", "blue")
+//   .attr("x", 360)
+//   .attr("y", 20)
+//   .attr("height", 20)
+//   .attr("width", 10)
 
 
-update();
+// update();
 
-function update() {
-  line.transition()
-    .duration(1000)
-    .attr("x2", 400)
-    .ease(d3.easeBounceOut)
+// function update() {
+//   line.transition()
+//     .duration(1000)
+//     .attr("x2", 400)
+//     .ease(d3.easeBounceOut)
 
-  leftBar.transition()
-    .ease(d3.easeBounceOut)
+//   leftBar.transition()
+//     .ease(d3.easeBounceOut)
 
-    .duration(2000)
-    .attr("height", 240)
+//     .duration(2000)
+//     .attr("height", 240)
 
-  bar2.transition()
-    .ease(d3.easeLinear)
-    .duration(2000)
-    .delay(2000)
-    .attr("height", 240)
-}
+//   bar2.transition()
+//     .ease(d3.easeLinear)
+//     .duration(2000)
+//     .delay(2000)
+//     .attr("height", 240)
+// }

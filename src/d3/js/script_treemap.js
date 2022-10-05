@@ -83,7 +83,13 @@ d3.csv('js/data/test2.csv').then(function (data) {
     .style('position', 'absolute')
     .style('padding', '0 10px')
     .style('background', 'white')
-    .style('opacity', 0);
+    .style('opacity', 0)
+    .style('pointer-events', 'none')
+
+  const color = d3.scaleOrdinal()
+    .domain(["BC", "Alberta", "Saskatchewan", "Manitoba", "Ontario", "Quebec", "Maritime", "Prairies"])
+    .range(["#db8a00", "#75b0ff", "#13ad37", "#5d6d00", "#757582", "#d37cff", "#f96868", "#5d6d00"])
+
 
   // stratify the data: reformatting for d3.js
   const root = d3.stratify()
@@ -111,26 +117,24 @@ d3.csv('js/data/test2.csv').then(function (data) {
     .attr('width', function (d) { return d.x1 - d.x0; })
     .attr('height', function (d) { return d.y1 - d.y0; })
     .style("stroke", "black")
-    .style("fill", "#69b3a2")
+    // .style("fill", "#69b3a2")
+    .style("fill", d => color(d.data.parent))
 
     .on('mouseover', function (event, d) {
-      // console.log('event: ', event.x, event.y, 'd: ', d)
       tooltip2.transition().duration(200)
         .style('opacity', .9)
       tooltip2.html(
-        '<div style="font-size: 2rem; font-weight: bold">' +
+        '<div style="font-size: 1rem; font-weight: bold">' +
         d.data.value + '</div>'
       )
         .style('left', (event.pageX - 35) + 'px')
         .style('top', (event.pageY - 30) + 'px')
       housingColor = this.style.fill;
       d3.select(this)
-        // .style('fill', 'yellow')
+        .style('fill', '#4b53a2')
     })
-  
+
     .on('mouseout', function (event, d) {
-      // console.log('event: ', event, 'd: ', d)
-  
       tooltip2.html('')
       d3.select(this)
         .style('fill', housingColor)
@@ -143,9 +147,23 @@ d3.csv('js/data/test2.csv').then(function (data) {
     .join("text")
     .attr("x", function (d) { return d.x0 + 10 })    // +10 to adjust position (more right)
     .attr("y", function (d) { return d.y0 + 20 })    // +20 to adjust position (lower)
-    .text(function (d) { return d.data.name })
+    .text(function (d) {
+      // let width = d.x1 - d.x0;
+      // if (width > 75) {
+      //   return d.data.name
+      // } else
+      // return d.data.name.slice(0,1)
+      return d.data.name
+    })
     .attr("font-size", "15px")
     .attr("fill", "white")
+    .attr('writing-mode', function (d) {
+      let width = d.x1 - d.x0;
+      if (width > 75) {
+        return ''
+      } else
+      return 'vertical-rl'
+    })
 
 
 })
